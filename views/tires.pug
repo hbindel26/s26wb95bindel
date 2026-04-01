@@ -2,16 +2,3 @@ extends layout
 
 block content
   h1= title
-  .container-fluid
-    .row
-      each item, index in results
-        // This div uses the required Bootstrap class and handles the Bonus click
-        div(class="col-sm-2", onclick=`buy(${index})`)
-          h3 #{item.tire_type}
-          p Size: #{item.size}
-          p Cost: $#{item.cost}
-
-  script.
-    function buy(index) {
-      alert(`You purchased item ${index + 1}`);
-    }
