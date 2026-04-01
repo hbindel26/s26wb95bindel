@@ -8,8 +8,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var searchRouter = require('./routes/search');
 var tiresRouter = require('./routes/tires');
-var chooseRouter = require('./routes/choose');
 var gridRouter = require('./routes/grid');
+var pickRouter = require('./routes/pick');
 
 var app = express();
 
@@ -27,8 +27,9 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/search', searchRouter);
 app.use('/tires', tiresRouter);
-app.use('/choose', chooseRouter);
 app.use('/grid', gridRouter);
+app.use('/pick', pickRouter);
+
 
 
 
