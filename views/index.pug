@@ -2,26 +2,21 @@ extends layout
 
 block content
   h1= title
+  p Welcome to #{title}
   
-  //- Step 1: Unbuffered server-side code for results
-  -
-    let results = [
-      { tire_type: "All-Season", size: "215/55R17", cost: 120 },
-      { tire_type: "Winter", size: "225/50R18", cost: 155 },
-      { tire_type: "Performance", size: "245/40R19", cost: 210 }
-    ]
+  //- Part 4 Button and Logic [cite: 79, 107, 111]
+  button(type="button", class="btn btn-secondary", onclick="reduce()") Sample Button
+  div#use(class="mt-3") take some away
 
-  //- Steps 2-4: Outermost div (container-fluid) and middle div (row)
-  div(class="container-fluid")
-    div(class="row")
-      //- Step 5: Iterate over the objects
-      each item in results
-        //- Step 6: Inner div for each object with class col-sm-2
-        div(class="col-sm-2")
-          p Type: #{item.tire_type}
-          p Size: #{item.size}
-          p Cost: $#{item.cost}
-  
-  //- Step 8: Add a hyperlink back to the index page
+  script.
+    let current = 11;
+    let quantity = 2;
+    function reduce() {
+      current -= quantity;
+      if (current < 0) current = 0;
+      document.getElementById('use').innerText = `Reduced by ${quantity} to ${current}`;
+    }
+
+  //- Step 8: Hyperlink to the tires endpoint 
   br
-  a(href="/") Back to Home Page
+  a(href="/tires") View Tire Results
