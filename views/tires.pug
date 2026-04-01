@@ -5,6 +5,7 @@ block content
   .container-fluid
     .row
       each item, index in results
+        // This div uses the required Bootstrap class and handles the Bonus click
         div(class="col-sm-2", onclick=`buy(${index})`)
           h3 #{item.tire_type}
           p Size: #{item.size}
