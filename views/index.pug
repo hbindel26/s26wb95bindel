@@ -2,19 +2,26 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
-  // Step 4: Add onclick to the button
-  button(type="button", class="btn btn-secondary", onclick="reduce()") Sample Button
+  
+  //- Step 1: Unbuffered server-side code for results
+  -
+    let results = [
+      { tire_type: "All-Season", size: "215/55R17", cost: 120 },
+      { tire_type: "Winter", size: "225/50R18", cost: 155 },
+      { tire_type: "Performance", size: "245/40R19", cost: 210 }
+    ]
 
-  // Step 1: Add the div
-  div#use(class="mt-3") take some away
-
-  // Step 3: Add the script block
-  script.
-    let current = 11;
-    let quantity = 2;
-    function reduce() {
-      current -= quantity;
-      if (current < 0) current = 0;
-      document.getElementById('use').innerText = `Reduced by ${quantity} to ${current}`;
-    }
+  //- Steps 2-4: Outermost div (container-fluid) and middle div (row)
+  div(class="container-fluid")
+    div(class="row")
+      //- Step 5: Iterate over the objects
+      each item in results
+        //- Step 6: Inner div for each object with class col-sm-2
+        div(class="col-sm-2")
+          p Type: #{item.tire_type}
+          p Size: #{item.size}
+          p Cost: $#{item.cost}
+  
+  //- Step 8: Add a hyperlink back to the index page
+  br
+  a(href="/") Back to Home Page
